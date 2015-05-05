@@ -59,7 +59,7 @@ public class DeptListPage implements DeptList, Page {
    * @return
    */
   private String normalizeDepartmentId(String name) {
-    return name.replaceAll("[\\s_]", "");
+    return name.replaceAll("[\\s]", "");
   }
 
   @Override public Map<String, Department> getChildren() { return getModel().getChildren(); }
