@@ -29,6 +29,7 @@ public class CoursePage implements Course, Page {
   private final Page page;
   private final String id;
   private final String title;
+  private RateableCollection rateableCollection;
   private Map<String, TceClass> children;
 
   public interface CoursePageFactory {
@@ -51,6 +52,7 @@ public class CoursePage implements Course, Page {
     this.page = page;
     this.page.setHtmlUrl(String.format(COURSE_PAGE_URL_BASE, departmentId.replaceAll("[\\s_]", ""), id));
     buildChildren();
+    this.rateableCollection = new RateableCollection(this.getChildren().values());
   }
 
   private void buildChildren() {
@@ -78,6 +80,21 @@ public class CoursePage implements Course, Page {
 
   @Override public String toString() {
     return new StringBuilder(id).append(" - ").append(title).toString();
+  }
+  
+  @Override
+  public int getRatingCount(Question question) {
+    return rateableCollection.getRatingCount(question);
+  }
+
+  @Override
+  public double getAverageScore(Question question) {
+    return rateableCollection.getAverageScore(question);
+  }
+
+  @Override
+  public double getWilsonScore(Question question) {
+    return rateableCollection.getWilsonScore(question);
   }
 
   @Override

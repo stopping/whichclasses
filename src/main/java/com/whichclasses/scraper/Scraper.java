@@ -22,7 +22,7 @@ public class Scraper implements DataSource {
   public void runScrape() {
     // For now: scrape one thing and build models for each.
     Map<String, Department> depts = mDeptList.getChildren();
-    Department firstDepartment = depts.get("ACCT");
+    Department firstDepartment = depts.get("C_SC");
     System.out.println("Got department " + firstDepartment);
     Map<String, Course> courses = firstDepartment.getChildren();
 

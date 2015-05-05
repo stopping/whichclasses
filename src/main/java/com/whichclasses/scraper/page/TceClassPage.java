@@ -63,6 +63,21 @@ public class TceClassPage implements TceClass, Page {
   }
 
   @Override
+  public int getRatingCount(Question question) {
+    return getModel().getRatingCount(question);
+  }
+
+  @Override
+  public double getAverageScore(Question question) {
+    return getModel().getAverageScore(question);
+  }
+
+  @Override
+  public double getWilsonScore(Question question) {
+    return getModel().getWilsonScore(question);
+  }
+
+  @Override
   public String getHtmlUrl() {
     return page.getHtmlUrl();
   }
